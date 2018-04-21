@@ -40,7 +40,7 @@ if( searchAttribute == null ){
 } else {
 
 	String attributeValue = request.getParameter("attributeValue");
-	Connector connector = new Connector();
+	Connector2 connector = new Connector2();
 	Order order = new Order();
 	
 %>  
