@@ -66,7 +66,4 @@ if(userAttribute == null ){
   %>
 <BR><a href="register.jsp"> Register new user </a></p>
 
-<p>Schema for Order table: <font face="Geneva, Arial, Helvetica, sans-serif">( 
-  title varchar(100), quantity integer, login varchar(8), director varchar(10) 
-  )</font></p>
 </body>
