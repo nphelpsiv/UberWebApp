@@ -10,7 +10,7 @@ import com.mysql.jdbc.Connection;
 
 public class UberController {
 	
-	User currentUser;
+	public User currentUser;
 	private ArrayList<User> drivers = new ArrayList<User>();
 	private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private ArrayList<Ride> rides = new ArrayList<Ride>();
@@ -120,9 +120,10 @@ public class UberController {
 	 * @param con
 	 * @return
 	 */
-	public boolean declareFavCar(int vin, String u, Connector2 con) {
+	public boolean declareFavCar(String vin, String u, Connector2 con) {
+		int vinAsInt = Integer.parseInt(vin);
 		if (currentUser.get_username().equals(u))
-			return sql.declareFavCar(vin, currentUser, con);
+			return sql.declareFavCar(vinAsInt, currentUser, con);
 		return false;
 	}
 	
