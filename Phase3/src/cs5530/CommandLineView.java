@@ -1270,19 +1270,6 @@ public class CommandLineView {
 	    	 }
 	     }
 	}
-	private static java.sql.Date stringToDate(String str)
-	{
-		SimpleDateFormat sd = new SimpleDateFormat("dd-MM-yyyy");
-		java.util.Date date = null;
-		try {
-			date = sd.parse(str);
-		} catch (ParseException e) {
-			System.out.println("Invalid date format");
-			e.printStackTrace();
-		}
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime());  
-		return sqlDate;
-	}
 	private static boolean waitDone() throws IOException
 	{
 		String choice = "";
