@@ -89,9 +89,11 @@ public class UberController {
 	 * @param con
 	 * @return
 	 */
-	public boolean addNewCar(int vin, String category, String model, String make, int year, String owner, Connector2 con) {
-		if (currentUser.get_isDriver() && currentUser.get_username().equals(owner))
-			return sql.addNewCar(vin, category, model, make, year, owner, con);
+	public boolean addNewCar(String vin, String category, String model, String make, String year, Connector2 con) {
+		int v = Integer.parseInt(vin);
+		int y = Integer.parseInt(year);
+		if (currentUser.get_isDriver())
+			return sql.addNewCar(v, category, model, make, y, currentUser.get_username(), con);
 		return false;
 	}
 	
@@ -106,9 +108,11 @@ public class UberController {
 	 * @param con
 	 * @return
 	 */
-	public boolean editCar(int vin, String category, String model, String make, int year, String owner, Connector2 con) {
-		if (currentUser.get_isDriver() && currentUser.get_username().equals(owner))
-			return sql.editCar(vin, category, model, make, year, con);
+	public boolean editCar(String vin, String category, String model, String make, String year, Connector2 con) {
+		int v = Integer.parseInt(vin);
+		int y = Integer.parseInt(year);
+		if (currentUser.get_isDriver())
+			return sql.editCar(v, category, model, make, y, con);
 		return false;
 	}
 	
@@ -199,9 +203,10 @@ public class UberController {
 	 * @param con
 	 * @return
 	 */
-	public boolean giveFeedback(String vin, int score, String feedback, Connector2 con) {
+	public boolean giveFeedback(String vin, String score, String feedback, Connector2 con) {
+		int s = Integer.parseInt(score);
 		int v = Integer.parseInt(vin);
-		return sql.giveFeedback(currentUser, v, score, feedback, con);
+		return sql.giveFeedback(currentUser, v, s, feedback, con);
 	}
 	
 	
@@ -245,8 +250,10 @@ public class UberController {
 	 * @param con
 	 * @return
 	 */
-	public boolean setFeedbackRating(int fid, int rating, Connector2 con) {
-		return sql.setFeedbackRating(currentUser, fid, rating, con);
+	public boolean setFeedbackRating(String fid, String rating, Connector2 con) {
+		int fidInt = Integer.parseInt(fid);
+		int ratingInt = Integer.parseInt(rating);
+		return sql.setFeedbackRating(currentUser, fidInt, ratingInt, con);
 	}
 	
 	
