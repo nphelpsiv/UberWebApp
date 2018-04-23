@@ -45,7 +45,7 @@ if(userAttribute == null && driverAttribute == null){
 		<input type=text name="phoneValue" length=20>
 		<BR>Are you a driver? (enter yes or no): <BR>
 		<input type=hidden name="isDriverAttribute" value="isDriver">
-		<input type=text name="isDriverValue" length=20>
+		<input type=text name="isDriverValue" length=20><br>
 		<input type=submit>
 	</form>
 	<BR><BR>
@@ -61,7 +61,8 @@ if(userAttribute == null && driverAttribute == null){
 		String phone = request.getParameter("phoneValue");
 		String isDriver = request.getParameter("isDriverValue");
 		//UberController ub = new UberController();
-		Connector2 con = (Connector2) session.getAttribute("connector2");
+		Connector2 con = new Connector2();
+		session.setAttribute("connector2", con);
 		UberController ub = (UberController) session.getAttribute("ub");
 		String url = (String) session.getAttribute("url");
 		if(ub.setNewUser(username, password, name, address, phone, isDriver, con))

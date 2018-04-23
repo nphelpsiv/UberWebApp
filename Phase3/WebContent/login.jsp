@@ -17,30 +17,34 @@ function check_all_fields(form_obj){
 <body>
 
 <%
+Connector2 con = (Connector2) session.getAttribute("connector2");
+if (con != null)
+	con.closeConnection();
 Connector2 connector2 = new Connector2();
 session.setAttribute("connector2", connector2);
 UberController ub = new UberController();
 session.setAttribute("ub", ub);
-String url = "http://localhost:8080/Phase3v2/";
+String url = "http://georgia.eng.utah.edu:8080/~5530u30/";
 session.setAttribute("url", url);
 String userAttribute = request.getParameter("usernameAttribute");
 if(userAttribute == null ){
 	
 %>
 
-	Login \n
+	Login<br>
 	Username:
 	<form name="user_login" method=get onsubmit="return check_all_fields(this)" action="login.jsp">
 		<input type=hidden name="usernameAttribute" value="username">
 		<input type=text name="usernameValue" length=20>
 		<BR>Password: <BR>
 		<input type=hidden name="passwordAttribute" value="password">
-		<input type=text name="passwordValue" length=20>
+		<input type=text name="passwordValue" length=20><br>
 		<input type=submit>
 	</form>
 	<BR><BR>
 
   <BR><BR>
+  <BR><a href="register.jsp"> Register new user </a></p>
   <% connector2.closeConnection();%>
  <%
  
@@ -64,6 +68,7 @@ if(userAttribute == null ){
 		
   }
   %>
-<BR><a href="register.jsp"> Register new user </a></p>
+
 
 </body>
+</html>
