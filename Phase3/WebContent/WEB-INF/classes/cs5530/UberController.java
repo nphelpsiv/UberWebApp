@@ -1,6 +1,8 @@
 package cs5530;
 
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -440,7 +442,19 @@ public class UberController {
 	public int degreesOfSeparation(String u1, String u2, Connector2 con) {
 		return sql.degreesOfSeparation(u1, u2, con);
 	}
-	
+	public static java.sql.Date stringToDate(String str)
+	{
+		SimpleDateFormat sd = new SimpleDateFormat("dd-MM-yyyy");
+		java.util.Date date = null;
+		try {
+			date = sd.parse(str);
+		} catch (ParseException e) {
+			System.out.println("Invalid date format");
+			e.printStackTrace();
+		}
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());  
+		return sqlDate;
+	}
 	
 
 }

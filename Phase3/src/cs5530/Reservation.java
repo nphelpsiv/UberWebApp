@@ -8,6 +8,7 @@ public class Reservation {
 	private String _pid;
 	private int _cost;
 	private Date _date;
+	private String time;
 	
 	public Reservation(String vin, String pid, int cost, Date date) {
 		_vin = vin;
@@ -45,6 +46,14 @@ public class Reservation {
 	}
 	public void set_Date(Date date) {
 		this._date = date;
+	}
+	public void set_time(String time)
+	{
+		this.time = time;
+	}
+	public String get_Time()
+	{
+		return this.time;
 	}
 
 }
